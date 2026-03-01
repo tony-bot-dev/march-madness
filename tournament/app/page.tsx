@@ -38,7 +38,7 @@ export default function Home() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
           <div>
             <p className="data-mono">// MARCH TO THE TITLE 2026</p>
-            <h1>TONY&apos;S<br />MADNESS</h1>
+            <h1>TONY&apos;S<br />BRACKET</h1>
           </div>
           <div style={{ position: 'relative' }}>
             <Image

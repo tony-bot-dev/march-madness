@@ -40,7 +40,7 @@ export default function LeaderboardPage() {
           />
         </Link>
         <h2 style={{ marginTop: '1rem' }}>Leaderboard</h2>
-        <p className="data-mono" style={{ marginTop: '0.5rem' }}>// Tony&apos;s Madness 2026</p>
+        <p className="data-mono" style={{ marginTop: '0.5rem' }}>// Tony&apos;s Bracket 2026</p>
       </div>
 
       {/* Navigation */}
