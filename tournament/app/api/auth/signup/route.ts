@@ -4,6 +4,10 @@ import { supabase } from '@/lib/supabase';
 import { createSession } from '@/lib/auth';
 
 export async function POST(req: NextRequest) {
+  if (!supabase) {
+    return NextResponse.json({ error: 'Service unavailable' }, { status: 503 });
+  }
+
   try {
     const { displayName, password } = await req.json();
 
@@ -39,9 +43,13 @@ export async function POST(req: NextRequest) {
     }
 
     // Create empty bracket for the user
-    await supabase
+    const { error: bracketError } = await supabase
       .from('brackets')
       .insert({ user_id: user.id, picks: {}, locked: false, score: 0 });
+
+    if (bracketError) {
+      console.error('Bracket creation error:', bracketError);
+    }
 
     // Create session
     const token = await createSession({ id: user.id, displayName: user.display_name });
@@ -55,7 +63,8 @@ export async function POST(req: NextRequest) {
     });
 
     return response;
-  } catch {
+  } catch (err) {
+    console.error('Signup error:', err);
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }
 }
