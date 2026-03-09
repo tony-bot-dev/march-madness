@@ -148,10 +148,9 @@ export default function Home() {
             }}>
               {[
                 '64 Teams, Single Elimination',
-                'Entry Fee: $25 per bracket',
+                'Free to enter',
                 'One bracket per person',
                 'No changes after brackets lock',
-                'Winner takes all',
               ].map((rule) => (
                 <li key={rule} style={{
                   display: 'flex',
@@ -208,30 +207,25 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Prize */}
+        {/* Simulator */}
         <section className="relief-card">
           <div className="relief-inner">
-            <p className="data-mono" style={{ marginBottom: '1.2rem' }}>// Prize</p>
-            <div style={{ textAlign: 'center', padding: '1rem 0' }}>
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-                fontWeight: 900,
-                lineHeight: 1,
-                background: 'linear-gradient(180deg, var(--orange) 0%, var(--orange-muted) 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}>WINNER<br />TAKES ALL</p>
-              <p style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '0.75rem',
-                color: 'var(--text-dim)',
-                marginTop: '1rem',
-                letterSpacing: '0.05em',
-              }}>
-                Entire pot goes to 1st place
-              </p>
-            </div>
+            <p className="data-mono" style={{ marginBottom: '1.2rem' }}>// Simulator</p>
+            <p style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '0.8rem',
+              color: 'var(--text-dim)',
+              lineHeight: 1.7,
+              marginBottom: '1.5rem',
+            }}>
+              Run 100 tournament simulations and see who the math says wins. Champion odds, runner-up chances, Elite 8 dark horses — all generated in seconds.
+            </p>
+            <Link href="/simulate" className="pebble-cta" style={{ fontSize: '0.8rem', padding: '0.9rem 1.6rem' }}>
+              Run Simulations
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
           </div>
         </section>
       </div>
@@ -256,7 +250,7 @@ export default function Home() {
               },
               {
                 q: 'How do I join?',
-                a: 'Sign up for an account, fill out your bracket, and pay the $25 entry fee. That\u2019s it!',
+                a: 'Sign up for an account and fill out your bracket. It\u2019s free \u2014 that\u2019s it!',
               },
               {
                 q: 'What if there\u2019s a tie?',
