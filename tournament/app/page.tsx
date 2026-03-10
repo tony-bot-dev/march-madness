@@ -277,6 +277,63 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Tony's Work */}
+      <section className="relief-card animate-reveal" style={{ animationDelay: '1.2s', marginTop: '1.5rem' }}>
+        <div className="relief-inner">
+          <p className="data-mono" style={{ marginBottom: '1.5rem' }}>// Tony&apos;s Work</p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: '1.5rem',
+          }}>
+            {[
+              { title: 'Tony Agentino', href: 'https://tony-agentino.vercel.app/', img: '/tony-agentino.png' },
+              { title: 'AI Dispatch Playbook', href: 'https://ai-dispatch-playbook.vercel.app/', img: '/ai-dispatch-playbook.png' },
+              { title: 'Ghost Caddie', href: 'https://ghost-caddie.vercel.app/', img: '/ghost-caddie.png' },
+            ].map((site) => (
+              <a
+                key={site.href}
+                href={site.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'block',
+                  textDecoration: 'none',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(255,255,255,0.06)',
+                  background: 'var(--surface)',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 12px 32px rgba(255,92,0,0.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                <div style={{ width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#111' }}>
+                  <img
+                    src={site.img}
+                    alt={site.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                </div>
+                <p style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: '0.8rem',
+                  color: 'var(--text-main)',
+                  padding: '0.75rem 1rem',
+                  margin: 0,
+                }}>{site.title}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="animate-reveal" style={{
         animationDelay: '1.1s',
@@ -301,7 +358,7 @@ export default function Home() {
           marginTop: '1.2rem',
         }}>
           {/* X (Twitter) */}
-          <a href="#" aria-label="X" style={{ color: 'var(--text-dim)', transition: 'color 0.3s' }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--orange)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-dim)')}>
+          <a href="https://x.com/TonyAgentino" target="_blank" rel="noopener noreferrer" aria-label="X" style={{ color: 'var(--text-dim)', transition: 'color 0.3s' }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--orange)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-dim)')}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
             </svg>
