@@ -6,6 +6,8 @@ import './simulate.css';
 
 interface SimResult {
   seed: number;
+  teamName: string;
+  region: string;
   count: number;
   percentage: string;
 }
@@ -13,8 +15,7 @@ interface SimResult {
 interface SimResults {
   champions: SimResult[];
   finalists: SimResult[];
-  elite8: SimResult[];
-  sweet16: SimResult[];
+  finalFour: SimResult[];
   totalSims: number;
   timestamp: string;
 }
@@ -47,7 +48,7 @@ function ResultsSection({ title, data }: { title: string; data: SimResult[] }) {
       <p className="sim-section-title">{title}</p>
       {data.map((item, idx) => (
         <div key={idx} className="sim-row">
-          <span className="sim-row-label">#{item.seed} Seed</span>
+          <span className="sim-row-label">{item.teamName} ({item.seed})</span>
           <div className="sim-row-right">
             <div className="sim-bar-track">
               <div
@@ -168,7 +169,7 @@ export default function SimulatePage() {
                 <ResultsSection title="🥈 Runner-Up Odds" data={results.finalists.slice(0, 5)} />
               </div>
               <div className="card">
-                <ResultsSection title="🎯 Elite 8 Appearances" data={results.elite8.slice(0, 5)} />
+                <ResultsSection title="🏀 Final Four Appearances" data={results.finalFour.slice(0, 5)} />
               </div>
             </div>
 
