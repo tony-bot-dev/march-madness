@@ -12,7 +12,7 @@ export default function Home() {
   const [countdown, setCountdown] = useState({ d: 0, h: 0, m: 0, s: 0 });
 
   useEffect(() => {
-    const target = new Date('2026-03-15T00:00:00');
+    const target = new Date('2026-03-19T16:15:00Z');
     function update() {
       const diff = target.getTime() - Date.now();
       if (diff <= 0) {
@@ -68,7 +68,7 @@ export default function Home() {
           color: 'var(--orange)',
           textTransform: 'uppercase',
           marginBottom: '2rem',
-        }}>// Teams Announced In</p>
+        }}>// Brackets Lock In</p>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
           {[
@@ -181,9 +181,9 @@ export default function Home() {
               gap: '0.8rem',
             }}>
               {[
-                { date: 'Mar 15', label: 'Teams Announced' },
+                { date: 'Mar 15', label: 'Teams Announced ✓' },
                 { date: 'Mar 19', label: 'Brackets Lock' },
-                { date: 'Mar 20', label: 'First Round Begins' },
+                { date: 'Mar 19', label: 'First Round Begins' },
                 { date: 'Apr 4-6', label: 'Final Four & Championship' },
               ].map((item) => (
                 <li key={item.label} style={{
