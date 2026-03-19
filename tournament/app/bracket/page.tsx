@@ -23,6 +23,7 @@ import {
   teamSeed,
   type Region,
 } from '@/lib/teams';
+import { ACTUAL_RESULTS } from '@/lib/tournament-results';
 import './bracket.css';
 
 const FEED_MAP = buildFeedMap();
@@ -236,6 +237,7 @@ export default function BracketPage() {
             locked={locked}
             onPick={handlePick}
             mirrored={false}
+            results={ACTUAL_RESULTS}
           />
           <RegionBracket
             region="west"
@@ -244,6 +246,7 @@ export default function BracketPage() {
             locked={locked}
             onPick={handlePick}
             mirrored={false}
+            results={ACTUAL_RESULTS}
           />
 
           {/* Center: Final Four + Championship */}
@@ -257,6 +260,7 @@ export default function BracketPage() {
                 picks={picks}
                 locked={locked}
                 onPick={handlePick}
+                results={ACTUAL_RESULTS}
                 className="final-four-matchup"
               />
             </div>
@@ -270,6 +274,7 @@ export default function BracketPage() {
                 picks={picks}
                 locked={locked}
                 onPick={handlePick}
+                results={ACTUAL_RESULTS}
                 className="final-four-matchup"
               />
             </div>
@@ -289,6 +294,7 @@ export default function BracketPage() {
                 picks={picks}
                 locked={locked}
                 onPick={handlePick}
+                results={ACTUAL_RESULTS}
                 className="final-four-matchup"
               />
             </div>
@@ -302,6 +308,7 @@ export default function BracketPage() {
             locked={locked}
             onPick={handlePick}
             mirrored={true}
+            results={ACTUAL_RESULTS}
           />
           <RegionBracket
             region="midwest"
@@ -310,6 +317,7 @@ export default function BracketPage() {
             locked={locked}
             onPick={handlePick}
             mirrored={true}
+            results={ACTUAL_RESULTS}
           />
         </div>
       </div>
@@ -326,6 +334,7 @@ function RegionBracket({
   locked,
   onPick,
   mirrored,
+  results,
 }: {
   region: Region;
   slots: Record<string, GameSlots>;
@@ -333,6 +342,7 @@ function RegionBracket({
   locked: boolean;
   onPick: (gameId: string, teamKey: string) => void;
   mirrored: boolean;
+  results: Record<string, string>;
 }) {
   const regionClass = `region region-${region} ${mirrored ? 'mirrored' : ''}`;
 
@@ -358,6 +368,7 @@ function RegionBracket({
                 picks={picks}
                 locked={locked}
                 onPick={onPick}
+                results={results}
               />
             );
           })}
@@ -373,6 +384,7 @@ function MatchupSlot({
   picks,
   locked,
   onPick,
+  results,
   className = '',
 }: {
   gameId: string;
@@ -380,12 +392,14 @@ function MatchupSlot({
   picks: Record<string, string>;
   locked: boolean;
   onPick: (gameId: string, teamKey: string) => void;
+  results: Record<string, string>;
   className?: string;
 }) {
   const gameSlots = slots[gameId];
   if (!gameSlots) return null;
 
   const picked = picks[gameId];
+  const actualWinner = results[gameId] || null;
 
   return (
     <div className={`matchup ${className}`}>
@@ -393,6 +407,8 @@ function MatchupSlot({
         teamKeyVal={gameSlots.top}
         isPicked={picked === gameSlots.top && !!gameSlots.top}
         isEliminated={!!picked && picked !== gameSlots.top && !!gameSlots.top}
+        isActualWinner={actualWinner === gameSlots.top && !!gameSlots.top}
+        isActualLoser={!!actualWinner && actualWinner !== gameSlots.top && !!gameSlots.top}
         isLocked={locked}
         onClick={() => {
           if (gameSlots.top && !locked) onPick(gameId, gameSlots.top);
@@ -402,6 +418,8 @@ function MatchupSlot({
         teamKeyVal={gameSlots.bot}
         isPicked={picked === gameSlots.bot && !!gameSlots.bot}
         isEliminated={!!picked && picked !== gameSlots.bot && !!gameSlots.bot}
+        isActualWinner={actualWinner === gameSlots.bot && !!gameSlots.bot}
+        isActualLoser={!!actualWinner && actualWinner !== gameSlots.bot && !!gameSlots.bot}
         isLocked={locked}
         onClick={() => {
           if (gameSlots.bot && !locked) onPick(gameId, gameSlots.bot);
@@ -415,12 +433,16 @@ function TeamSlotView({
   teamKeyVal,
   isPicked,
   isEliminated,
+  isActualWinner,
+  isActualLoser,
   isLocked,
   onClick,
 }: {
   teamKeyVal: string | null;
   isPicked: boolean;
   isEliminated: boolean;
+  isActualWinner: boolean;
+  isActualLoser: boolean;
   isLocked: boolean;
   onClick: () => void;
 }) {
@@ -439,6 +461,8 @@ function TeamSlotView({
     'team-slot',
     isPicked ? 'picked' : '',
     isEliminated ? 'eliminated' : '',
+    isActualWinner ? 'actual-winner' : '',
+    isActualLoser ? 'actual-loser' : '',
     isLocked ? 'locked' : '',
   ]
     .filter(Boolean)
@@ -448,6 +472,8 @@ function TeamSlotView({
     <div className={classes} onClick={onClick}>
       <span className="slot-seed">{seed}</span>
       <span className="slot-name">{name}</span>
+      {isActualWinner && <span className="result-badge winner-badge">W</span>}
+      {isActualLoser && <span className="result-badge loser-badge">L</span>}
     </div>
   );
 }
