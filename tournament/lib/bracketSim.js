@@ -23,7 +23,7 @@ const TEAMS = {
     9: "Iowa",         10: "Texas A&M",
     11: "VCU",         12: "McNeese",
     13: "Troy",        14: "Penn",
-    15: "Idaho",       16: "Prairie View/Lehigh",
+    15: "Idaho",       16: "Prairie View A&M",
   },
   west: {
     1: "Arizona",       2: "Purdue",
@@ -31,7 +31,7 @@ const TEAMS = {
     5: "Wisconsin",     6: "BYU",
     7: "Miami",         8: "Villanova",
     9: "Utah St",      10: "Missouri",
-    11: "Texas/NC State",12: "High Point",
+    11: "Texas",        12: "High Point",
     13: "Hawaii",      14: "Kennesaw St",
     15: "Queens",      16: "LIU",
   },
@@ -41,9 +41,9 @@ const TEAMS = {
     5: "Texas Tech",    6: "Tennessee",
     7: "Kentucky",      8: "Georgia",
     9: "Saint Louis",  10: "Santa Clara",
-    11: "Miami OH/SMU", 12: "Akron",
+    11: "Miami OH",     12: "Akron",
     13: "Hofstra",     14: "Wright St",
-    15: "Tennessee St", 16: "UMBC/Howard",
+    15: "Tennessee St", 16: "Howard",
   },
 };
 
