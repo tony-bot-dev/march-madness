@@ -14,11 +14,13 @@ export const BRACKETS_LOCKED = true;
 export const ACTUAL_RESULTS: Record<string, string> = {
   // === EAST REGION ===
   'east-r64-2': 'east-9',   // TCU (9) def. Ohio St (8)
+  'east-r64-5': 'east-6',   // Louisville (6) def. South Florida (11)
 
   // === SOUTH REGION ===
   'south-r64-4': 'south-4',  // Nebraska (4) def. Troy (13)
 
   // === WEST REGION ===
+  'west-r64-3': 'west-12',  // High Point (12) def. Wisconsin (5)
 
   // === MIDWEST REGION ===
 };
