@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { getSession } from '@/lib/auth';
+import { BRACKETS_LOCKED, ACTUAL_RESULTS } from '@/lib/tournament-results';
+import { calculateScore } from '@/lib/bracket-logic';
 
 // GET: Fetch bracket(s)
 // ?userId=<id>  → single user's bracket
@@ -22,17 +24,22 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ bracket: data });
   }
 
-  // Return all brackets with user names
+  // Return all brackets with user names, scores computed on-the-fly
   const { data, error } = await supabase
     .from('brackets')
-    .select('*, users(display_name)')
-    .order('score', { ascending: false });
+    .select('*, users(display_name)');
 
   if (error) {
     return NextResponse.json({ error: 'Failed to fetch brackets' }, { status: 500 });
   }
 
-  return NextResponse.json({ brackets: data });
+  const brackets = (data || []).map((b) => ({
+    ...b,
+    score: calculateScore(b.picks || {}, ACTUAL_RESULTS),
+  }));
+  brackets.sort((a, b) => b.score - a.score);
+
+  return NextResponse.json({ brackets });
 }
 
 // POST: Save bracket picks
@@ -48,6 +55,11 @@ export async function POST(req: NextRequest) {
     // Users can only save their own bracket
     if (userId !== session.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
+    }
+
+    // Global lock — tournament has started
+    if (BRACKETS_LOCKED) {
+      return NextResponse.json({ error: 'All brackets are locked — the tournament has started' }, { status: 400 });
     }
 
     // Check if bracket is already locked

@@ -23,7 +23,7 @@ import {
   teamSeed,
   type Region,
 } from '@/lib/teams';
-import { ACTUAL_RESULTS } from '@/lib/tournament-results';
+import { ACTUAL_RESULTS, BRACKETS_LOCKED } from '@/lib/tournament-results';
 import './bracket.css';
 
 const FEED_MAP = buildFeedMap();
@@ -64,7 +64,7 @@ export default function BracketPage() {
       .then((data) => {
         if (data.bracket) {
           const savedPicks = data.bracket.picks || {};
-          setLocked(data.bracket.locked || false);
+          setLocked(BRACKETS_LOCKED || data.bracket.locked || false);
           // Replay picks to rebuild slots
           replayPicks(savedPicks);
         }

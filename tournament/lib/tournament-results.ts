@@ -1,3 +1,6 @@
+// Global lock — set to true to prevent all bracket changes
+export const BRACKETS_LOCKED = true;
+
 // Actual tournament results — update as games are played
 // Key: game_id (e.g., "east-r64-2"), Value: winner team key (e.g., "east-9")
 //

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { calculateScore } from '@/lib/bracket-logic';
+import { ACTUAL_RESULTS } from '@/lib/tournament-results';
 
 // Verify API key for agent access
 function verifyApiKey(req: NextRequest): boolean {
@@ -31,15 +32,8 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    // Fetch all results
-    const { data: resultsData } = await supabase
-      .from('tournament_results')
-      .select('game_id, winner_team_key');
-
-    const results: Record<string, string> = {};
-    resultsData?.forEach((r) => {
-      results[r.game_id] = r.winner_team_key;
-    });
+    // Use static results file
+    const results = ACTUAL_RESULTS;
 
     // Fetch all brackets
     const { data: brackets } = await supabase
