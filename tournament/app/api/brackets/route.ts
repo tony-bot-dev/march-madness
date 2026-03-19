@@ -35,6 +35,7 @@ export async function GET(req: NextRequest) {
 
   const brackets = (data || []).map((b) => ({
     ...b,
+    locked: BRACKETS_LOCKED || b.locked,
     score: calculateScore(b.picks || {}, ACTUAL_RESULTS),
   }));
   brackets.sort((a, b) => b.score - a.score);
