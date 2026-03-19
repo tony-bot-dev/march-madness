@@ -13,6 +13,7 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   'east-r64-2': 'east-9',   // TCU (9) def. Ohio St (8)
 
   // === SOUTH REGION ===
+  'south-r64-4': 'south-4',  // Nebraska (4) def. Troy (13)
 
   // === WEST REGION ===
 
