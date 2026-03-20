@@ -344,6 +344,7 @@
     background: hotpink !important;
     border-color: hotpink !important;
     color: #000 !important;
+    opacity: 1 !important;
 }
 
 /* Wrong pick: user picked this team but it lost */

@@ -159,16 +159,16 @@ export default function BracketPage() {
     router.push('/');
   }
 
-  // Track which R32+ slots were filled by actual results (not just projections)
+  // Track which R32+ slots were filled by actual results: maps "gameId-slot" → winning team key
   const actuallyAdvanced = useMemo(() => {
-    const set = new Set<string>();
+    const map = new Map<string, string>();
     for (const [gameId, winner] of Object.entries(ACTUAL_RESULTS)) {
       const feed = FEED_MAP[gameId];
       if (feed) {
-        set.add(`${feed.target}-${feed.slot}`);
+        map.set(`${feed.target}-${feed.slot}`, winner);
       }
     }
-    return set;
+    return map;
   }, []);
 
   const pickCount = Object.keys(picks).length;
@@ -363,7 +363,7 @@ function RegionBracket({
   onPick: (gameId: string, teamKey: string) => void;
   mirrored: boolean;
   results: Record<string, string>;
-  actuallyAdvanced: Set<string>;
+  actuallyAdvanced: Map<string, string>;
 }) {
   const regionClass = `region region-${region} ${mirrored ? 'mirrored' : ''}`;
 
@@ -416,7 +416,7 @@ function MatchupSlot({
   locked: boolean;
   onPick: (gameId: string, teamKey: string) => void;
   results: Record<string, string>;
-  actuallyAdvanced: Set<string>;
+  actuallyAdvanced: Map<string, string>;
   className?: string;
 }) {
   const gameSlots = slots[gameId];
@@ -424,6 +424,10 @@ function MatchupSlot({
 
   const picked = picks[gameId];
   const actualWinner = results[gameId] || null;
+
+  // Check if the team in each slot actually won their way here (team must match)
+  const topAdvanced = actuallyAdvanced.get(`${gameId}-top`) === gameSlots.top && !!gameSlots.top;
+  const botAdvanced = actuallyAdvanced.get(`${gameId}-bot`) === gameSlots.bot && !!gameSlots.bot;
 
   return (
     <div className={`matchup ${className}`}>
@@ -433,7 +437,7 @@ function MatchupSlot({
         isEliminated={!!picked && picked !== gameSlots.top && !!gameSlots.top}
         isActualWinner={actualWinner === gameSlots.top && !!gameSlots.top}
         isActualLoser={!!actualWinner && actualWinner !== gameSlots.top && !!gameSlots.top}
-        isActuallyAdvanced={actuallyAdvanced.has(`${gameId}-top`)}
+        isActuallyAdvanced={topAdvanced}
         isLocked={locked}
         onClick={() => {
           if (gameSlots.top && !locked) onPick(gameId, gameSlots.top);
@@ -445,7 +449,7 @@ function MatchupSlot({
         isEliminated={!!picked && picked !== gameSlots.bot && !!gameSlots.bot}
         isActualWinner={actualWinner === gameSlots.bot && !!gameSlots.bot}
         isActualLoser={!!actualWinner && actualWinner !== gameSlots.bot && !!gameSlots.bot}
-        isActuallyAdvanced={actuallyAdvanced.has(`${gameId}-bot`)}
+        isActuallyAdvanced={botAdvanced}
         isLocked={locked}
         onClick={() => {
           if (gameSlots.bot && !locked) onPick(gameId, gameSlots.bot);
