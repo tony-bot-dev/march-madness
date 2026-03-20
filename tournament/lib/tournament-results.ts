@@ -27,6 +27,7 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   'south-r64-8': 'south-2',  // Houston (2) def. Idaho (15)
 
   // === WEST REGION ===
+  'west-r64-1': 'west-1',   // Arizona (1) def. LIU (16)
   'west-r64-3': 'west-12',  // High Point (12) def. Wisconsin (5)
   'west-r64-4': 'west-4',   // Arkansas (4) def. Hawaii (13)
   'west-r64-5': 'west-11',  // Texas (11) def. BYU (6)
@@ -35,4 +36,8 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   // === MIDWEST REGION ===
   'midwest-r64-1': 'midwest-1',  // Michigan (1) def. Howard (16)
   'midwest-r64-2': 'midwest-9',  // Saint Louis (9) def. Georgia (8)
+  'midwest-r64-3': 'midwest-5',  // Texas Tech (5) def. Akron (12)
+  'midwest-r64-6': 'midwest-3',  // Virginia (3) def. Wright St (14)
+  'midwest-r64-7': 'midwest-7',  // Kentucky (7) def. Santa Clara (10) OT
+  'midwest-r64-8': 'midwest-2',  // Iowa State (2) def. Tennessee St (15)
 };
