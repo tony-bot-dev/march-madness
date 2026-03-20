@@ -341,10 +341,18 @@
 
 /* Team that actually advanced to this round (won previous game) */
 .team-slot.actually-advanced {
-    background: hotpink !important;
-    border-color: hotpink !important;
-    color: #000 !important;
-    opacity: 1 !important;
+    background: rgba(34, 197, 94, 0.18);
+    border-color: rgba(34, 197, 94, 0.4);
+    border-left: 3px solid rgba(34, 197, 94, 0.7);
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.12);
+    opacity: 1;
+}
+
+.team-slot.actually-advanced.picked {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(34, 197, 94, 0.15));
+    border-color: rgba(34, 197, 94, 0.6);
+    border-left: 3px solid rgba(34, 197, 94, 0.8);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
 }
 
 /* Wrong pick: user picked this team but it lost */
