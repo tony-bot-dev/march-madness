@@ -355,20 +355,30 @@
     box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
 }
 
+/* Wrong projection: team is in a later round slot but didn't actually advance */
+.team-slot.wrong-projection {
+    opacity: 0.3;
+    text-decoration: line-through;
+    text-decoration-color: rgba(239, 68, 68, 0.7);
+    text-decoration-thickness: 2px;
+}
+
 /* Wrong pick: user picked this team but it lost */
 .team-slot.actual-loser.picked {
     background: rgba(239, 68, 68, 0.12);
     border-color: rgba(239, 68, 68, 0.3);
     opacity: 0.55;
     text-decoration: line-through;
-    text-decoration-color: rgba(239, 68, 68, 0.4);
+    text-decoration-color: rgba(239, 68, 68, 0.7);
+    text-decoration-thickness: 2px;
 }
 
 /* Loser that wasn't picked — just dim */
 .team-slot.actual-loser {
     opacity: 0.35;
     text-decoration: line-through;
-    text-decoration-color: rgba(255, 255, 255, 0.3);
+    text-decoration-color: rgba(239, 68, 68, 0.6);
+    text-decoration-thickness: 2px;
 }
 
 .result-badge {

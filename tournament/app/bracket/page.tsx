@@ -426,8 +426,13 @@ function MatchupSlot({
   const actualWinner = results[gameId] || null;
 
   // Check if the team in each slot actually won their way here (team must match)
-  const topAdvanced = actuallyAdvanced.get(`${gameId}-top`) === gameSlots.top && !!gameSlots.top;
-  const botAdvanced = actuallyAdvanced.get(`${gameId}-bot`) === gameSlots.bot && !!gameSlots.bot;
+  const topAdvancedTeam = actuallyAdvanced.get(`${gameId}-top`);
+  const botAdvancedTeam = actuallyAdvanced.get(`${gameId}-bot`);
+  const topAdvanced = topAdvancedTeam === gameSlots.top && !!gameSlots.top;
+  const botAdvanced = botAdvancedTeam === gameSlots.bot && !!gameSlots.bot;
+  // Wrong projection: an actual result exists for this slot but the team here isn't the real winner
+  const topWrongProjection = !!topAdvancedTeam && topAdvancedTeam !== gameSlots.top && !!gameSlots.top;
+  const botWrongProjection = !!botAdvancedTeam && botAdvancedTeam !== gameSlots.bot && !!gameSlots.bot;
 
   return (
     <div className={`matchup ${className}`}>
@@ -438,6 +443,7 @@ function MatchupSlot({
         isActualWinner={actualWinner === gameSlots.top && !!gameSlots.top}
         isActualLoser={!!actualWinner && actualWinner !== gameSlots.top && !!gameSlots.top}
         isActuallyAdvanced={topAdvanced}
+        isWrongProjection={topWrongProjection}
         isLocked={locked}
         onClick={() => {
           if (gameSlots.top && !locked) onPick(gameId, gameSlots.top);
@@ -450,6 +456,7 @@ function MatchupSlot({
         isActualWinner={actualWinner === gameSlots.bot && !!gameSlots.bot}
         isActualLoser={!!actualWinner && actualWinner !== gameSlots.bot && !!gameSlots.bot}
         isActuallyAdvanced={botAdvanced}
+        isWrongProjection={botWrongProjection}
         isLocked={locked}
         onClick={() => {
           if (gameSlots.bot && !locked) onPick(gameId, gameSlots.bot);
@@ -466,6 +473,7 @@ function TeamSlotView({
   isActualWinner,
   isActualLoser,
   isActuallyAdvanced,
+  isWrongProjection,
   isLocked,
   onClick,
 }: {
@@ -475,6 +483,7 @@ function TeamSlotView({
   isActualWinner: boolean;
   isActualLoser: boolean;
   isActuallyAdvanced: boolean;
+  isWrongProjection: boolean;
   isLocked: boolean;
   onClick: () => void;
 }) {
@@ -496,6 +505,7 @@ function TeamSlotView({
     isActualWinner ? 'actual-winner' : '',
     isActualLoser ? 'actual-loser' : '',
     isActuallyAdvanced ? 'actually-advanced' : '',
+    isWrongProjection ? 'wrong-projection' : '',
     isLocked ? 'locked' : '',
   ]
     .filter(Boolean)
