@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -159,6 +159,18 @@ export default function BracketPage() {
     router.push('/');
   }
 
+  // Track which R32+ slots were filled by actual results (not just projections)
+  const actuallyAdvanced = useMemo(() => {
+    const set = new Set<string>();
+    for (const [gameId, winner] of Object.entries(ACTUAL_RESULTS)) {
+      const feed = FEED_MAP[gameId];
+      if (feed) {
+        set.add(`${feed.target}-${feed.slot}`);
+      }
+    }
+    return set;
+  }, []);
+
   const pickCount = Object.keys(picks).length;
   const pct = Math.round((pickCount / TOTAL_GAMES) * 100);
 
@@ -238,6 +250,7 @@ export default function BracketPage() {
             onPick={handlePick}
             mirrored={false}
             results={ACTUAL_RESULTS}
+            actuallyAdvanced={actuallyAdvanced}
           />
           <RegionBracket
             region="west"
@@ -247,6 +260,7 @@ export default function BracketPage() {
             onPick={handlePick}
             mirrored={false}
             results={ACTUAL_RESULTS}
+            actuallyAdvanced={actuallyAdvanced}
           />
 
           {/* Center: Final Four + Championship */}
@@ -261,6 +275,7 @@ export default function BracketPage() {
                 locked={locked}
                 onPick={handlePick}
                 results={ACTUAL_RESULTS}
+                actuallyAdvanced={actuallyAdvanced}
                 className="final-four-matchup"
               />
             </div>
@@ -275,6 +290,7 @@ export default function BracketPage() {
                 locked={locked}
                 onPick={handlePick}
                 results={ACTUAL_RESULTS}
+                actuallyAdvanced={actuallyAdvanced}
                 className="final-four-matchup"
               />
             </div>
@@ -295,6 +311,7 @@ export default function BracketPage() {
                 locked={locked}
                 onPick={handlePick}
                 results={ACTUAL_RESULTS}
+                actuallyAdvanced={actuallyAdvanced}
                 className="final-four-matchup"
               />
             </div>
@@ -309,6 +326,7 @@ export default function BracketPage() {
             onPick={handlePick}
             mirrored={true}
             results={ACTUAL_RESULTS}
+            actuallyAdvanced={actuallyAdvanced}
           />
           <RegionBracket
             region="midwest"
@@ -318,6 +336,7 @@ export default function BracketPage() {
             onPick={handlePick}
             mirrored={true}
             results={ACTUAL_RESULTS}
+            actuallyAdvanced={actuallyAdvanced}
           />
         </div>
       </div>
@@ -335,6 +354,7 @@ function RegionBracket({
   onPick,
   mirrored,
   results,
+  actuallyAdvanced,
 }: {
   region: Region;
   slots: Record<string, GameSlots>;
@@ -343,6 +363,7 @@ function RegionBracket({
   onPick: (gameId: string, teamKey: string) => void;
   mirrored: boolean;
   results: Record<string, string>;
+  actuallyAdvanced: Set<string>;
 }) {
   const regionClass = `region region-${region} ${mirrored ? 'mirrored' : ''}`;
 
@@ -369,6 +390,7 @@ function RegionBracket({
                 locked={locked}
                 onPick={onPick}
                 results={results}
+                actuallyAdvanced={actuallyAdvanced}
               />
             );
           })}
@@ -385,6 +407,7 @@ function MatchupSlot({
   locked,
   onPick,
   results,
+  actuallyAdvanced,
   className = '',
 }: {
   gameId: string;
@@ -393,6 +416,7 @@ function MatchupSlot({
   locked: boolean;
   onPick: (gameId: string, teamKey: string) => void;
   results: Record<string, string>;
+  actuallyAdvanced: Set<string>;
   className?: string;
 }) {
   const gameSlots = slots[gameId];
@@ -409,6 +433,7 @@ function MatchupSlot({
         isEliminated={!!picked && picked !== gameSlots.top && !!gameSlots.top}
         isActualWinner={actualWinner === gameSlots.top && !!gameSlots.top}
         isActualLoser={!!actualWinner && actualWinner !== gameSlots.top && !!gameSlots.top}
+        isActuallyAdvanced={actuallyAdvanced.has(`${gameId}-top`)}
         isLocked={locked}
         onClick={() => {
           if (gameSlots.top && !locked) onPick(gameId, gameSlots.top);
@@ -420,6 +445,7 @@ function MatchupSlot({
         isEliminated={!!picked && picked !== gameSlots.bot && !!gameSlots.bot}
         isActualWinner={actualWinner === gameSlots.bot && !!gameSlots.bot}
         isActualLoser={!!actualWinner && actualWinner !== gameSlots.bot && !!gameSlots.bot}
+        isActuallyAdvanced={actuallyAdvanced.has(`${gameId}-bot`)}
         isLocked={locked}
         onClick={() => {
           if (gameSlots.bot && !locked) onPick(gameId, gameSlots.bot);
@@ -435,6 +461,7 @@ function TeamSlotView({
   isEliminated,
   isActualWinner,
   isActualLoser,
+  isActuallyAdvanced,
   isLocked,
   onClick,
 }: {
@@ -443,6 +470,7 @@ function TeamSlotView({
   isEliminated: boolean;
   isActualWinner: boolean;
   isActualLoser: boolean;
+  isActuallyAdvanced: boolean;
   isLocked: boolean;
   onClick: () => void;
 }) {
@@ -463,6 +491,7 @@ function TeamSlotView({
     isEliminated ? 'eliminated' : '',
     isActualWinner ? 'actual-winner' : '',
     isActualLoser ? 'actual-loser' : '',
+    isActuallyAdvanced ? 'actually-advanced' : '',
     isLocked ? 'locked' : '',
   ]
     .filter(Boolean)
