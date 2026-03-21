@@ -51,4 +51,8 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   'midwest-r64-6': 'midwest-3',  // Virginia (3) def. Wright St (14)
   'midwest-r64-7': 'midwest-7',  // Kentucky (7) def. Santa Clara (10) OT
   'midwest-r64-8': 'midwest-2',  // Iowa State (2) def. Tennessee St (15)
+
+  // === ROUND OF 32 ===
+  // MIDWEST
+  'midwest-r32-1': 'midwest-1',  // Michigan (1) def. Saint Louis (9)
 };
