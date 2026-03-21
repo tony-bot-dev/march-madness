@@ -15,10 +15,13 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   // === EAST REGION ===
   'east-r64-1': 'east-1',   // Duke (1) def. Siena (16)
   'east-r64-2': 'east-9',   // TCU (9) def. Ohio St (8)
+  'east-r64-3': 'east-5',   // St. John's (5) def. N. Iowa (12)
   'east-r64-5': 'east-6',   // Louisville (6) def. South Florida (11)
   'east-r64-6': 'east-3',   // Michigan St (3) def. N. Dakota St (14)
+  'east-r64-7': 'east-7',   // UCLA (7) def. UCF (10)
 
   // === SOUTH REGION ===
+  'south-r64-2': 'south-9',  // Iowa (9) def. Clemson (8)
   'south-r64-3': 'south-5',  // Vanderbilt (5) def. McNeese (12)
   'south-r64-4': 'south-4',  // Nebraska (4) def. Troy (13)
   'south-r64-5': 'south-11', // VCU (11) def. North Carolina (6) OT
@@ -28,15 +31,19 @@ export const ACTUAL_RESULTS: Record<string, string> = {
 
   // === WEST REGION ===
   'west-r64-1': 'west-1',   // Arizona (1) def. LIU (16)
+  'west-r64-2': 'west-9',   // Utah St (9) def. Villanova (8)
   'west-r64-3': 'west-12',  // High Point (12) def. Wisconsin (5)
   'west-r64-4': 'west-4',   // Arkansas (4) def. Hawaii (13)
   'west-r64-5': 'west-11',  // Texas (11) def. BYU (6)
   'west-r64-6': 'west-3',   // Gonzaga (3) def. Kennesaw St (14)
+  'west-r64-8': 'west-2',   // Purdue (2) def. Queens (15)
 
   // === MIDWEST REGION ===
   'midwest-r64-1': 'midwest-1',  // Michigan (1) def. Howard (16)
   'midwest-r64-2': 'midwest-9',  // Saint Louis (9) def. Georgia (8)
   'midwest-r64-3': 'midwest-5',  // Texas Tech (5) def. Akron (12)
+  'midwest-r64-4': 'midwest-4',  // Alabama (4) def. Hofstra (13)
+  'midwest-r64-5': 'midwest-6',  // Tennessee (6) def. Miami OH (11)
   'midwest-r64-6': 'midwest-3',  // Virginia (3) def. Wright St (14)
   'midwest-r64-7': 'midwest-7',  // Kentucky (7) def. Santa Clara (10) OT
   'midwest-r64-8': 'midwest-2',  // Iowa State (2) def. Tennessee St (15)
