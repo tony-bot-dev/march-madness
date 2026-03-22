@@ -66,4 +66,5 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   'west-r32-4': 'west-2',        // Purdue (2) def. Miami (7)
   // MIDWEST
   'midwest-r32-1': 'midwest-1',  // Michigan (1) def. Saint Louis (9)
+  'midwest-r32-4': 'midwest-2',  // Iowa State (2) def. Kentucky (7)
 };
