@@ -94,9 +94,14 @@ export default function LeaderboardPage() {
                           </span>
                         </td>
                         <td style={{ ...tdStyle, textAlign: 'left' }}>
-                          <span style={{ fontWeight: 700, color: 'var(--text-main)' }}>
+                          <Link
+                            href={`/bracket/${b.user_id}`}
+                            style={{ fontWeight: 700, color: 'var(--text-main)', textDecoration: 'none' }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--orange)')}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-main)')}
+                          >
                             {b.users?.display_name || 'Unknown'}
-                          </span>
+                          </Link>
                         </td>
                         <td style={tdStyle}>
                           <span style={{ color: pickCount === 63 ? '#55ff55' : 'var(--text-dim)' }}>
