@@ -56,7 +56,12 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   // EAST
   'east-r32-1': 'east-1',        // Duke (1) def. TCU (9)
   'east-r32-3': 'east-3',        // Michigan St (3) def. Louisville (6)
+  // SOUTH
+  'south-r32-2': 'south-4',      // Nebraska (4) def. Vanderbilt (5)
+  'south-r32-3': 'south-3',      // Illinois (3) def. VCU (11)
+  'south-r32-4': 'south-2',      // Houston (2) def. Texas A&M (10)
   // WEST
+  'west-r32-2': 'west-4',        // Arkansas (4) def. High Point (12)
   'west-r32-3': 'west-11',       // Texas (11) def. Gonzaga (3)
   // MIDWEST
   'midwest-r32-1': 'midwest-1',  // Michigan (1) def. Saint Louis (9)
