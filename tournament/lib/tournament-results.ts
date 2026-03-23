@@ -58,14 +58,17 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   'east-r32-2': 'east-5',        // St. John's (5) def. Kansas (4)
   'east-r32-3': 'east-3',        // Michigan St (3) def. Louisville (6)
   // SOUTH
+  'south-r32-1': 'south-9',      // Iowa (9) def. Florida (1)
   'south-r32-2': 'south-4',      // Nebraska (4) def. Vanderbilt (5)
   'south-r32-3': 'south-3',      // Illinois (3) def. VCU (11)
   'south-r32-4': 'south-2',      // Houston (2) def. Texas A&M (10)
   // WEST
+  'west-r32-1': 'west-1',        // Arizona (1) def. Utah St (9)
   'west-r32-2': 'west-4',        // Arkansas (4) def. High Point (12)
   'west-r32-3': 'west-11',       // Texas (11) def. Gonzaga (3)
   'west-r32-4': 'west-2',        // Purdue (2) def. Miami (7)
   // MIDWEST
   'midwest-r32-1': 'midwest-1',  // Michigan (1) def. Saint Louis (9)
+  'midwest-r32-3': 'midwest-6',  // Tennessee (6) def. Virginia (3)
   'midwest-r32-4': 'midwest-2',  // Iowa State (2) def. Kentucky (7)
 };
