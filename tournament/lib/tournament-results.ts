@@ -55,6 +55,7 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   // === ROUND OF 32 ===
   // EAST
   'east-r32-1': 'east-1',        // Duke (1) def. TCU (9)
+  'east-r32-2': 'east-5',        // St. John's (5) def. Kansas (4)
   'east-r32-3': 'east-3',        // Michigan St (3) def. Louisville (6)
   // SOUTH
   'south-r32-2': 'south-4',      // Nebraska (4) def. Vanderbilt (5)
