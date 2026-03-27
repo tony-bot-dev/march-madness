@@ -73,4 +73,12 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   'midwest-r32-2': 'midwest-4',  // Alabama (4) def. Texas Tech (5)
   'midwest-r32-3': 'midwest-6',  // Tennessee (6) def. Virginia (3)
   'midwest-r32-4': 'midwest-2',  // Iowa State (2) def. Kentucky (7)
+
+  // === SWEET 16 (March 26-27) ===
+  // WEST (Thursday March 26)
+  'west-r16-1': 'west-1',        // Arizona (1) def. Arkansas (4) 109-88
+  'west-r16-2': 'west-2',        // Purdue (2) def. Texas (11) 79-77
+  // SOUTH (Thursday March 26)
+  'south-r16-1': 'south-9',      // Iowa (9) def. Nebraska (4) 77-71
+  'south-r16-2': 'south-3',      // Illinois (3) def. Houston (2) 65-55
 };
