@@ -76,15 +76,15 @@ export const ACTUAL_RESULTS: Record<string, string> = {
 
   // === SWEET 16 (March 26-27) ===
   // WEST (Thursday March 26)
-  'west-r16-1': 'west-1',        // Arizona (1) def. Arkansas (4) 109-88
-  'west-r16-2': 'west-2',        // Purdue (2) def. Texas (11) 79-77
+  'west-s16-1': 'west-1',        // Arizona (1) def. Arkansas (4) 109-88
+  'west-s16-2': 'west-2',        // Purdue (2) def. Texas (11) 79-77
   // SOUTH (Thursday March 26)
-  'south-r16-1': 'south-9',      // Iowa (9) def. Nebraska (4) 77-71
-  'south-r16-2': 'south-3',      // Illinois (3) def. Houston (2) 65-55
+  'south-s16-1': 'south-9',      // Iowa (9) def. Nebraska (4) 77-71
+  'south-s16-2': 'south-3',      // Illinois (3) def. Houston (2) 65-55
   // EAST (Friday March 27)
-  'east-r16-1': 'east-1',        // Duke (1) def. St. John's (5) 80-75
-  'east-r16-2': 'east-2',        // UConn (2) def. Michigan St (3) 67-63
+  'east-s16-1': 'east-1',        // Duke (1) def. St. John's (5) 80-75
+  'east-s16-2': 'east-2',        // UConn (2) def. Michigan St (3) 67-63
   // MIDWEST (Friday March 27)
-  'midwest-r16-1': 'midwest-1',  // Michigan (1) def. Alabama (4) 90-77
-  'midwest-r16-2': 'midwest-6',  // Tennessee (6) def. Iowa State (2) 76-62
+  'midwest-s16-1': 'midwest-1',  // Michigan (1) def. Alabama (4) 90-77
+  'midwest-s16-2': 'midwest-6',  // Tennessee (6) def. Iowa State (2) 76-62
 };
