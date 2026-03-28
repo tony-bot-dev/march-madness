@@ -83,6 +83,8 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   'south-r16-2': 'south-3',      // Illinois (3) def. Houston (2) 65-55
   // EAST (Friday March 27)
   'east-r16-1': 'east-1',        // Duke (1) def. St. John's (5) 80-75
+  'east-r16-2': 'east-2',        // UConn (2) def. Michigan St (3) 67-63
   // MIDWEST (Friday March 27)
   'midwest-r16-1': 'midwest-1',  // Michigan (1) def. Alabama (4) 90-77
+  'midwest-r16-2': 'midwest-6',  // Tennessee (6) def. Iowa State (2) 76-62
 };
