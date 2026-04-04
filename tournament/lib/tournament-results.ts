@@ -87,4 +87,10 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   // MIDWEST (Friday March 27)
   'midwest-s16-1': 'midwest-1',  // Michigan (1) def. Alabama (4) 90-77
   'midwest-s16-2': 'midwest-6',  // Tennessee (6) def. Iowa State (2) 76-62
+
+  // === ELITE 8 (March 28-29) ===
+  'west-e8-1': 'west-1',         // Arizona (1) def. Purdue (2) 79-64
+  'south-e8-1': 'south-3',       // Illinois (3) def. Iowa (9) 71-59
+  'east-e8-1': 'east-2',         // UConn (2) def. Duke (1) 73-72
+  'midwest-e8-1': 'midwest-1',   // Michigan (1) def. Tennessee (6) 95-62
 };
