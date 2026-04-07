@@ -93,4 +93,16 @@ export const ACTUAL_RESULTS: Record<string, string> = {
   'south-e8-1': 'south-3',       // Illinois (3) def. Iowa (9) 71-59
   'east-e8-1': 'east-2',         // UConn (2) def. Duke (1) 73-72
   'midwest-e8-1': 'midwest-1',   // Michigan (1) def. Tennessee (6) 95-62
+
+  // === FINAL FOUR (April 4) ===
+  // NOTE: Bracket-logic pairs ff-1=South/West and ff-2=East/Midwest, which differs
+  // from actual NCAA pairings (East/South and West/Midwest). Real semifinals were:
+  //   UConn (E2) def. Illinois (S3) 71-62
+  //   Michigan (M1) def. Arizona (W1) 91-73
+  // ff-1 (Illinois vs Arizona in our structure) never happened — left unset.
+  // ff-2 (UConn vs Michigan in our structure) actually played as the championship.
+  'ff-2': 'midwest-1',            // Michigan (1) def. UConn (2) 69-63
+
+  // === CHAMPIONSHIP (April 6) ===
+  'champ': 'midwest-1',           // Michigan (1) def. UConn (2) 69-63 — first title since 1989
 };
